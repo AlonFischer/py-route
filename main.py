@@ -2,11 +2,11 @@ import json
 import os
 
 
-IntraNet = "192.168.74.0/24"
+IntraNet = "192.168.50.0/24"
 
 def add_reroute(rule):
     # insert a rerouting rule
-    # sudo iptables -t nat -A PREROUTING -s 192.168.74.0/24 -p tcp  -d 185.199.110.153 -j DNAT --to-destination 192.168.74.133:80
+    # sudo iptables -t nat -A PREROUTING -s 192.168.50.0/24 -p tcp  -d 185.199.110.153 -j DNAT --to-destination 192.168.74.133:80
     cmd = "iptables -t nat -A PREROUTING "
     cmd += " -s " + rule['ip']
     if 'proto' in rule.keys(): cmd += " -p " + rule['proto']
