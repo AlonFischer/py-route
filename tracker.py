@@ -7,7 +7,7 @@ import time
 import os 
 
 CONFIG_FILE = "./config.json"
-TASK = "python main.py"
+TASK = "sudo python main.py"
 
 class FileEventHandler(FileSystemEventHandler):
     def __init__(self):
