@@ -34,22 +34,20 @@ def load_config():
     
     for k,v in configs.items():
         if k == 'global':
-            for r_type, rule in v.items():
-                for item in rule:
-                    if item['active'] != 1:
-                        continue
-                    item['type'] = r_type
-                    item['ip'] = IntraNet
-                    rules.append(item)
+            for r_type, glo_rules in v.items():
+                for rule in glo_rules:
+                    if rule['active'] != 1: continue
+                    rule['type'] = r_type
+                    rule['ip'] = IntraNet
+                    rules.append(rule)
         if k == 'sandbox':
             for ip, sb in v.items():
-                for r_type,rule in sb.items():
-                    for item in rule:
-                        if item['active'] != 1:
-                            continue
-                        item['type'] = r_type 
-                        item['ip'] = ip
-                        rules.append(item)
+                for r_type, sb_rules in sb.items():
+                    for rule in sb_rules:
+                        if rule['active'] != 1: continue
+                        rule['type'] = r_type 
+                        rule['ip'] = ip
+                        rules.append(rule)
     return rules
 
 

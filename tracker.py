@@ -16,7 +16,10 @@ class FileEventHandler(FileSystemEventHandler):
     def on_modified(self, event):
         if event.src_path == CONFIG_FILE:
             print("[+] Updating configs")
-            os.system(TASK)
+            try:
+                os.system(TASK)
+            except:
+                print("error while executing cmd"+ TASK )
 
 if __name__ == "__main__":
     observer = Observer()
