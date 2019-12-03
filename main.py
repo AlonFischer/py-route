@@ -36,6 +36,8 @@ def load_config():
         if k == 'global':
             for r_type, rule in v.items():
                 for item in rule:
+                    if item['active'] != 1:
+                        continue
                     item['type'] = r_type
                     item['ip'] = IntraNet
                     rules.append(item)
