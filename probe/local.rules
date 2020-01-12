@@ -1,0 +1,7 @@
+var MALWARE_NET [192.168.0.0/16]
+
+
+# CNC
+alert tcp $MALWARE_NET any <> any any \
+    (msg:"cnc"; content: "cnc_sig"; \
+    sid:10000006; rev:001;)
