@@ -13,6 +13,7 @@ def add_reroute(rule):
     if 'dst' in rule.keys(): cmd += " -d " + rule['dst']
     if 'dport' in rule.keys(): cmd += " --dport " + rule['dport']
     cmd += " -j DNAT --to-destination " + rule['target']
+    if 'tport' in rule.keys(): cmd += ":" + rule['tport']
     os.system(cmd)
 
 
