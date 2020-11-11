@@ -37,7 +37,8 @@ class Snort:
 
     def start_client(self):
         # start the client
-        args = "snort -A console -i ens33 -u snort -g snort -c /etc/snort/snort.conf"
+        eth = os.popen(r"""ip a |grep -i inet | awk '{print $7, $2}'|grep 192.168.50.1 | awk '{print $1}'""").read().replace("\n", "")
+        args = "snort -A console -i "+ eth +" -u snort -g snort -c /etc/snort/snort.conf"
         args = shlex.split(args)
         self.client = process(args)
 
